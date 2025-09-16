@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII ART GENERATOR - BRUTAL CONVERSION</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="brutal-container">
+        <!-- BRUTAL HEADER -->
+        <header class="brutal-header">
+            <div class="brutal-header-content">
+                <div class="brutal-logo">
+                    <div class="brutal-icon">[█]</div>
+                    <div class="brutal-title">
+                        <h1>ASCII ART GENERATOR</h1>
+                        <span class="brutal-tagline">BRUTAL CONVERSION TOOL</span>
+                    </div>
+                </div>
+                <div class="brutal-actions">
+                    <button id="themeToggle" class="brutal-btn brutal-btn-secondary" aria-label="Toggle theme">
+                        <span class="brutal-btn-text">DARK</span>
+                    </button>
+                    <button id="helpBtn" class="brutal-btn brutal-btn-secondary" aria-label="Help">
+                        <span class="brutal-btn-text">HELP</span>
+                    </button>
+                </div>
+            </div>
+            <div class="brutal-description">
+                <p>CONVERT IMAGES & TEXT INTO BRUTAL ASCII ART - NO SERVER REQUIRED</p>
+            </div>
+        </header>
+
+        <!-- BRUTAL MAIN CONTENT -->
+        <main class="brutal-main">
+            <!-- UNIFIED ASCII CONVERTER -->
+            <section class="brutal-converter-section">
+                <div class="brutal-card">
+                    <div class="brutal-card-header">
+                        <h2 class="brutal-card-title">
+                            <span class="brutal-card-icon">[ASCII]</span>
+                            BRUTAL ASCII CONVERTER
+                        </h2>
+                        <p class="brutal-card-subtitle">UPLOAD IMAGE OR ENTER TEXT → CONVERT TO BRUTAL ASCII ART</p>
+                    </div>
+                    
+                    <!-- IMAGE UPLOAD SECTION -->
+                    <div class="brutal-section">
+                        <h3 class="brutal-section-title">IMAGE TO ASCII</h3>
+                        <div class="brutal-upload-zone" id="uploadArea">
+                            <div class="brutal-upload-content">
+                                <div class="brutal-upload-icon">[UPLOAD]</div>
+                                <h4 class="brutal-upload-title">DROP IMAGE HERE OR CLICK TO BROWSE</h4>
+                                <p class="brutal-upload-subtitle">JPG, PNG, GIF, WebP (MAX 10MB)</p>
+                                <input type="file" id="imageInput" accept="image/*" hidden>
+                            </div>
+                        </div>
+
+                        <div class="brutal-image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImage" alt="Preview" class="brutal-preview-img">
+                            <button id="removeImage" class="brutal-remove-btn">
+                                <span class="brutal-remove-icon">[X]</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TEXT INPUT SECTION -->
+                    <div class="brutal-section">
+                        <h3 class="brutal-section-title">TEXT TO ASCII</h3>
+                        <div class="brutal-text-input-group">
+                            <label for="textInput" class="brutal-label">ENTER TEXT</label>
+                            <input type="text" id="textInput" placeholder="ENTER TEXT TO CONVERT..." maxlength="50" class="brutal-input brutal-input-large">
+                        </div>
+                    </div>
+
+                    <!-- UNIFIED CONTROLS -->
+                    <div class="brutal-controls">
+                        <h3 class="brutal-controls-title">CONVERSION SETTINGS</h3>
+                        <div class="brutal-controls-grid">
+                            <!-- IMAGE CONTROLS -->
+                            <div class="brutal-control-group">
+                                <label for="widthSlider" class="brutal-label">
+                                    WIDTH: <span id="widthValue" class="brutal-value">80</span> CHARACTERS
+                                </label>
+                                <input type="range" id="widthSlider" min="20" max="200" value="80" class="brutal-slider">
+                            </div>
+                            
+                            <div class="brutal-control-group">
+                                <label for="charSet" class="brutal-label">CHARACTER SET</label>
+                                <select id="charSet" class="brutal-select">
+                                    <option value="standard">STANDARD (@#%&*+=|;:-,. )</option>
+                                    <option value="detailed">DETAILED (Full character set)</option>
+                                    <option value="simple">SIMPLE (@#%&*+=|;:-,. )</option>
+                                    <option value="blocks">BLOCKS (█▓▒░ )</option>
+                                    <option value="dots">DOTS (●○◐◑◒◓◔◕)</option>
+                                    <option value="custom">CUSTOM</option>
+                                </select>
+                            </div>
+
+                            <div class="brutal-control-group" id="customCharGroup" style="display: none;">
+                                <label for="customChars" class="brutal-label">CUSTOM CHARACTERS</label>
+                                <input type="text" id="customChars" placeholder="ENTER CHARACTERS (DARKER TO LIGHTER)" class="brutal-input">
+                            </div>
+
+                            <div class="brutal-control-group brutal-checkbox-group">
+                                <label for="invertColors" class="brutal-checkbox-label">
+                                    <input type="checkbox" id="invertColors" class="brutal-checkbox">
+                                    <span class="brutal-checkbox-text">INVERT COLORS</span>
+                                </label>
+                            </div>
+
+                            <div class="brutal-control-group">
+                                <label for="contrastSlider" class="brutal-label">
+                                    CONTRAST: <span id="contrastValue" class="brutal-value">1.0</span>
+                                </label>
+                                <input type="range" id="contrastSlider" min="0.1" max="3.0" step="0.1" value="1.0" class="brutal-slider">
+                            </div>
+
+                            <!-- TEXT CONTROLS -->
+                            <div class="brutal-control-group">
+                                <label for="asciiFont" class="brutal-label">ASCII FONT</label>
+                                <select id="asciiFont" class="brutal-select">
+                                    <option value="standard">STANDARD</option>
+                                    <option value="big">BIG</option>
+                                    <option value="slant">SLANT</option>
+                                    <option value="3d">3D</option>
+                                    <option value="banner">BANNER</option>
+                                    <option value="block">BLOCK</option>
+                                    <option value="bubble">BUBBLE</option>
+                                    <option value="digital">DIGITAL</option>
+                                    <option value="isometric">ISOMETRIC</option>
+                                    <option value="letters">LETTERS</option>
+                                    <option value="alligator">ALLIGATOR</option>
+                                    <option value="dotmatrix">DOT MATRIX</option>
+                                </select>
+                            </div>
+
+                            <div class="brutal-control-group">
+                                <label for="textAlign" class="brutal-label">ALIGNMENT</label>
+                                <select id="textAlign" class="brutal-select">
+                                    <option value="left">LEFT</option>
+                                    <option value="center">CENTER</option>
+                                    <option value="right">RIGHT</option>
+                                </select>
+                            </div>
+
+                            <div class="brutal-control-group">
+                                <label for="textWidth" class="brutal-label">
+                                    TEXT WIDTH: <span id="textWidthValue" class="brutal-value">80</span> CHARACTERS
+                                </label>
+                                <input type="range" id="textWidth" min="40" max="200" value="80" class="brutal-slider">
+                            </div>
+                        </div>
+
+                        <!-- CONVERT BUTTONS -->
+                        <div class="brutal-convert-buttons">
+                            <button id="convertImage" class="brutal-btn brutal-btn-primary brutal-btn-large" disabled>
+                                <span class="brutal-btn-icon">[CONVERT]</span>
+                                <span class="brutal-btn-text">CONVERT IMAGE</span>
+                            </button>
+                            <button id="convertText" class="brutal-btn brutal-btn-primary brutal-btn-large">
+                                <span class="brutal-btn-icon">[GENERATE]</span>
+                                <span class="brutal-btn-text">GENERATE TEXT</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BRUTAL RESULTS SECTION -->
+            <section class="brutal-results" id="resultsSection" style="display: none;">
+                <div class="brutal-card">
+                    <div class="brutal-results-header">
+                        <h3 class="brutal-results-title">
+                            <span class="brutal-results-icon">[OUTPUT]</span>
+                            ASCII ART OUTPUT
+                        </h3>
+                        <div class="brutal-results-actions">
+                            <button id="copyAscii" class="brutal-btn brutal-btn-secondary">
+                                <span class="brutal-btn-text">COPY</span>
+                            </button>
+                            <button id="downloadAscii" class="brutal-btn brutal-btn-secondary">
+                                <span class="brutal-btn-text">DOWNLOAD</span>
+                            </button>
+                            <button id="clearResults" class="brutal-btn brutal-btn-danger">
+                                <span class="brutal-btn-text">CLEAR</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="brutal-ascii-output">
+                        <pre id="asciiOutput" class="brutal-ascii-text"></pre>
+                    </div>
+                    
+                    <div class="brutal-output-info">
+                        <div class="brutal-info-item">
+                            <span class="brutal-info-label">CHARACTERS:</span>
+                            <span class="brutal-info-value" id="charCount">0</span>
+                        </div>
+                        <div class="brutal-info-item">
+                            <span class="brutal-info-label">LINES:</span>
+                            <span class="brutal-info-value" id="lineCount">0</span>
+                        </div>
+                        <div class="brutal-info-item">
+                            <span class="brutal-info-label">SIZE:</span>
+                            <span class="brutal-info-value" id="outputSize">0 BYTES</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BRUTAL GALLERY SECTION -->
+            <section class="brutal-gallery">
+                <div class="brutal-card">
+                    <h3 class="brutal-gallery-title">
+                        <span class="brutal-gallery-icon">[GALLERY]</span>
+                        ASCII ART GALLERY
+                    </h3>
+                    <p class="brutal-gallery-subtitle">BRUTAL EXAMPLES TO GET YOU STARTED</p>
+                    
+                    <div class="brutal-gallery-grid" id="galleryGrid">
+                        <!-- Gallery items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- BRUTAL FOOTER -->
+        <footer class="brutal-footer">
+            <p class="brutal-footer-text">© 2025 ASCII ART GENERATOR - BRUTAL CONVERSION TOOL</p>
+            <p class="brutal-footer-subtext">ALL PROCESSING HAPPENS LOCALLY - NO DATA SENT TO SERVERS</p>
+        </footer>
+    </div>
+
+    <!-- BRUTAL HELP MODAL -->
+    <div id="helpModal" class="brutal-modal">
+        <div class="brutal-modal-content">
+            <div class="brutal-modal-header">
+                <h3 class="brutal-modal-title">
+                    <span class="brutal-modal-icon">[HELP]</span>
+                    HOW TO USE
+                </h3>
+                <button class="brutal-close-btn" id="closeHelp">
+                    <span class="brutal-close-icon">[X]</span>
+                </button>
+            </div>
+            <div class="brutal-modal-body">
+                <div class="brutal-help-section">
+                    <h4 class="brutal-help-title">IMAGE TO ASCII</h4>
+                    <ul class="brutal-help-list">
+                        <li>UPLOAD ANY IMAGE (JPG, PNG, GIF, WebP)</li>
+                        <li>ADJUST WIDTH TO CONTROL DETAIL LEVEL</li>
+                        <li>CHOOSE CHARACTER SETS FOR DIFFERENT STYLES</li>
+                        <li>USE CONTRAST AND INVERT OPTIONS FOR BETTER RESULTS</li>
+                    </ul>
+                </div>
+                <div class="brutal-help-section">
+                    <h4 class="brutal-help-title">TEXT TO ASCII</h4>
+                    <ul class="brutal-help-list">
+                        <li>ENTER TEXT (MAX 50 CHARACTERS)</li>
+                        <li>SELECT FROM VARIOUS ASCII FONTS</li>
+                        <li>CHOOSE ALIGNMENT AND WIDTH</li>
+                        <li>EXPERIMENT WITH DIFFERENT STYLES</li>
+                    </ul>
+                </div>
+                <div class="brutal-help-section">
+                    <h4 class="brutal-help-title">TIPS</h4>
+                    <ul class="brutal-help-list">
+                        <li>HIGHER CONTRAST IMAGES WORK BETTER</li>
+                        <li>TRY DIFFERENT CHARACTER SETS FOR UNIQUE LOOKS</li>
+                        <li>USE MONOSPACE FONTS FOR BEST DISPLAY</li>
+                        <li>COPY AND PASTE ASCII ART TO SHARE</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
