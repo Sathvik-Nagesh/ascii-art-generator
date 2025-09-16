@@ -2,6 +2,12 @@
 
 A **BRUTAL** client-side ASCII art generator that converts images and text into **NEO-BRUTALISM** styled ASCII art. No server required - everything runs in your browser with **THICK BORDERS** and **HARSH SHADOWS**!
 
+## 🚀 LIVE DEMO
+
+**[TRY IT NOW → https://sathvik-nagesh.github.io/ascii-art-generator/](https://sathvik-nagesh.github.io/ascii-art-generator/)**
+
+*Experience the brutal ASCII conversion tool in action!*
+
 ## BRUTAL FEATURES
 
 ### 🖼️ IMAGE TO ASCII
