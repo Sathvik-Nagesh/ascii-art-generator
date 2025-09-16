@@ -987,10 +987,10 @@ body {
 }
 
 .brutal-help-section {
-    margin-bottom: var(--brutal-space-xl);
+    margin-bottom: var(--brutal-space-xxl);
     background: var(--brutal-gray-100);
     padding: var(--brutal-space-lg);
-    border: var(--brutal-border-thin);
+    border: var(--brutal-border-thick);
     box-shadow: var(--brutal-shadow-small);
     transform: rotate(0.5deg);
 }
@@ -1016,28 +1016,29 @@ body {
 }
 
 .brutal-help-list li {
-    padding: var(--brutal-space-sm) 0;
-    color: var(--brutal-black);
+    padding: var(--brutal-space-md);
+    color: var(--brutal-white);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: relative;
-    padding-left: var(--brutal-space-xl);
-    background: var(--brutal-white);
-    margin-bottom: var(--brutal-space-sm);
-    border: var(--brutal-border-thin);
+    padding-left: var(--brutal-space-md);
+    background: var(--brutal-black);
+    margin-bottom: var(--brutal-space-md);
+    border: var(--brutal-border-thick);
     box-shadow: var(--brutal-shadow-small);
     transform: rotate(-0.5deg);
 }
 
 .brutal-help-list li::before {
-    content: "[•]";
+    content: "[";
     color: var(--brutal-red);
     font-weight: 900;
     font-family: var(--brutal-font-mono);
     position: absolute;
-    left: var(--brutal-space-md);
-    transform: rotate(15deg);
+    left: var(--brutal-space-sm);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* UTILITY CLASSES */
